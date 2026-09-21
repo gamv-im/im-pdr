@@ -1,0 +1,932 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="utf-8">
+
+<title>Inventario - PDR</title>
+
+<style>
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f5f7fa;
+    margin: 0;
+}
+
+header {
+    background: #2563eb;
+    color: white;
+    padding: 15px 20px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.resumen{
+    display:flex;
+    gap:15px;
+    margin-bottom:20px;
+}
+
+.card-resumen{
+    background:white;
+    padding:15px 20px;
+    border-radius:8px;
+    box-shadow:0 2px 4px rgba(0,0,0,.08);
+    min-width:150px;
+    text-align: center;
+}
+
+.card-resumen span{
+    display:block;
+    color:#666;
+    font-size:13px;
+}
+
+.card-resumen strong{
+    font-size:28px;
+    color:#38bdf8;
+}
+
+#buscar{
+    width:100%;
+    max-width:400px;
+    padding:10px;
+    margin-bottom:20px;
+    border:1px solid #ccc;
+    border-radius:6px;
+}
+
+th{
+    cursor:pointer;
+    position:sticky;
+    top:0;
+    z-index:5;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+}
+
+th,
+td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+th {
+    background: #f3f4f6;
+}
+
+tr:hover {
+    background: #f9fafb;
+}
+
+.navegacion {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+
+.btn-nav {
+    display: inline-block;
+    padding: 10px 15px;
+    background: #2563eb;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+}
+
+.btn-nav:hover {
+    background: #1d4ed8;
+}
+
+.btn-nav:visited {
+    color: white;
+}
+
+.nav-header {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.nav-header a {
+    color: white;
+    text-decoration: none;
+    padding: 8px 12px;
+    border: 1px solid rgba(255,255,255,.4);
+    border-radius: 6px;
+    font-weight: bold;
+}
+
+.nav-header a:hover {
+    background: rgba(255,255,255,.15);
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<h1>Inventario de Impresoras - PDR</h1>
+
+<div class="nav-header">
+
+<a href="index.html">🏠 Inicio</a>
+
+<a href="alertas.html">⚠️ Alertas</a>
+
+<a href="instalaciones.html">🔧 Instalaciones</a>
+
+</div>
+
+</header>
+
+<div class="container">
+
+<input
+    type="text"
+    id="buscar"
+    placeholder="🔍 Buscar equipo, serie, modelo o IP..."
+>
+
+<table id="tabla">
+
+<thead>
+
+<tr>
+<th onclick="ordenarTabla(0)">#</th>
+<th onclick="ordenarTabla(1)">Nombre ↕</th>
+<th onclick="ordenarTabla(2)">Serie ↕</th>
+<th onclick="ordenarTabla(3)">Modelo ↕</th>
+<th onclick="ordenarTabla(4)">IP ↕</th>
+<th onclick="ordenarTabla(5)">Negro ↕</th>
+<th onclick="ordenarTabla(6)">Color ↕</th>
+<th onclick="ordenarTabla(7)">Total ↕</th>
+<th onclick="ordenarTabla(8)">Estado ↕</th>
+<th onclick="ordenarTabla(9)">Última lectura</th>
+</tr>
+
+</thead>
+
+
+
+<tbody>
+
+
+            <tr>
+            <td>1</td>
+            <td>STC-CTRL-OPERACIONES</td>
+            <td><a href="PDR-3356636529.html">3356636529</a></td>
+            <td>Xerox VersaLink C405</td>
+            <td>172.16.1.246</td>
+            <td>127.645</td>
+            <td>107.302</td>
+            <td>234.947</td>
+            <td>🔴</td>
+            <td>21-09-2026 13:10:45</td>
+            </tr>
+            
+            <tr>
+            <td>2</td>
+            <td>VersaLink B405</td>
+            <td><a href="PDR-3719067157.html">3719067157</a></td>
+            <td>Xerox VersaLink B405</td>
+            <td>172.16.1.207</td>
+            <td>94.617</td>
+            <td>-</td>
+            <td>94.617</td>
+            <td>🔴</td>
+            <td>21-09-2026 13:10:29</td>
+            </tr>
+            
+            <tr>
+            <td>3</td>
+            <td>PAV2-BODEGA</td>
+            <td><a href="PDR-3719048748.html">3719048748</a></td>
+            <td>Xerox VersaLink B405</td>
+            <td>172.16.1.217</td>
+            <td>51.562</td>
+            <td>-</td>
+            <td>51.562</td>
+            <td>🔴</td>
+            <td>21-09-2026 13:10:31</td>
+            </tr>
+            
+            <tr>
+            <td>4</td>
+            <td>PAV2-ADM-PAISAJ</td>
+            <td><a href="PDR-3351397283.html">3351397283</a></td>
+            <td>Xerox VersaLink B400</td>
+            <td>172.16.1.219</td>
+            <td>30.449</td>
+            <td>-</td>
+            <td>30.449</td>
+            <td>🔴</td>
+            <td>21-09-2026 13:10:33</td>
+            </tr>
+            
+            <tr>
+            <td>5</td>
+            <td>STC-COBRANZAS2</td>
+            <td><a href="PDR-3719066118.html">3719066118</a></td>
+            <td>Xerox VersaLink B405</td>
+            <td>172.16.1.220</td>
+            <td>267.356</td>
+            <td>-</td>
+            <td>267.356</td>
+            <td>🔴</td>
+            <td>21-09-2026 13:10:36</td>
+            </tr>
+            
+            <tr>
+            <td>6</td>
+            <td>STC-OPERACIONES</td>
+            <td><a href="PDR-3719442977.html">3719442977</a></td>
+            <td>Xerox VersaLink B405</td>
+            <td>172.16.1.240</td>
+            <td>119.561</td>
+            <td>-</td>
+            <td>119.561</td>
+            <td>🔴</td>
+            <td>21-09-2026 13:10:39</td>
+            </tr>
+            
+            <tr>
+            <td>7</td>
+            <td>STC-GV-ESCALERA</td>
+            <td><a href="PDR-3390579747.html">3390579747</a></td>
+            <td>Xerox VersaLink B7025</td>
+            <td>172.16.1.242</td>
+            <td>435.465</td>
+            <td>-</td>
+            <td>435.465</td>
+            <td>🔴</td>
+            <td>21-09-2026 13:10:43</td>
+            </tr>
+            
+            <tr>
+            <td>8</td>
+            <td>LTO-ApoyoVentas</td>
+            <td><a href="PDR-3356011553.html">3356011553</a></td>
+            <td>Xerox VersaLink C405</td>
+            <td>172.16.10.34</td>
+            <td>55.281</td>
+            <td>126.628</td>
+            <td>181.909</td>
+            <td>🔴</td>
+            <td>21-09-2026 13:10:50</td>
+            </tr>
+            
+            <tr>
+            <td>9</td>
+            <td>SUECIA_P10_OPERACIONES</td>
+            <td><a href="PDR-3593608289.html">3593608289</a></td>
+            <td>Xerox VersaLink C415 Color</td>
+            <td>172.16.10.44</td>
+            <td>2.148</td>
+            <td>1.131</td>
+            <td>3.279</td>
+            <td>🔴</td>
+            <td>21-09-2026 13:10:54</td>
+            </tr>
+            
+            <tr>
+            <td>10</td>
+            <td>OSSA-JV-MH</td>
+            <td><a href="PDR-3719433846.html">3719433846</a></td>
+            <td>Xerox VersaLink B405</td>
+            <td>172.16.11.202</td>
+            <td>124.393</td>
+            <td>-</td>
+            <td>124.393</td>
+            <td>🔴</td>
+            <td>21-09-2026 13:11:01</td>
+            </tr>
+            
+            <tr>
+            <td>11</td>
+            <td>OSSA-JV-JF</td>
+            <td><a href="PDR-3719442497.html">3719442497</a></td>
+            <td>Xerox VersaLink B405</td>
+            <td>172.16.11.210</td>
+            <td>76.278</td>
+            <td>-</td>
+            <td>76.278</td>
+            <td>🔴</td>
+            <td>21-09-2026 13:11:03</td>
+            </tr>
+            
+            <tr>
+            <td>12</td>
+            <td>Ossa-P7-Asesores</td>
+            <td><a href="PDR-3355977748.html">3355977748</a></td>
+            <td>Xerox VersaLink C405</td>
+            <td>172.16.11.7</td>
+            <td>81.345</td>
+            <td>113.506</td>
+            <td>194.851</td>
+            <td>🔴</td>
+            <td>21-09-2026 13:11:09</td>
+            </tr>
+            
+            <tr>
+            <td>13</td>
+            <td>OSSA-ATC</td>
+            <td><a href="PDR-3719047687.html">3719047687</a></td>
+            <td>Xerox VersaLink B405</td>
+            <td>172.16.12.200</td>
+            <td>78.850</td>
+            <td>-</td>
+            <td>78.850</td>
+            <td>🔴</td>
+            <td>21-09-2026 13:11:15</td>
+            </tr>
+            
+            <tr>
+            <td>14</td>
+            <td>LTO-Personal_color</td>
+            <td><a href="PDR-3356024604.html">3356024604</a></td>
+            <td>Xerox VersaLink C405</td>
+            <td>172.16.2.216</td>
+            <td>38.660</td>
+            <td>47.916</td>
+            <td>86.576</td>
+            <td>🔴</td>
+            <td>21-09-2026 13:11:19</td>
+            </tr>
+            
+            <tr>
+            <td>15</td>
+            <td>LTO-GG</td>
+            <td><a href="PDR-3356024850.html">3356024850</a></td>
+            <td>Xerox VersaLink C405</td>
+            <td>172.16.2.220</td>
+            <td>28.617</td>
+            <td>72.444</td>
+            <td>101.061</td>
+            <td>🔴</td>
+            <td>21-09-2026 13:11:24</td>
+            </tr>
+            
+            <tr>
+            <td>16</td>
+            <td>Cobranza</td>
+            <td><a href="PDR-3719433471.html">3719433471</a></td>
+            <td>Xerox VersaLink B405</td>
+            <td>172.16.2.236</td>
+            <td>95.717</td>
+            <td>-</td>
+            <td>95.717</td>
+            <td>🔴</td>
+            <td>21-09-2026 13:11:28</td>
+            </tr>
+            
+            <tr>
+            <td>17</td>
+            <td>PAV-REC-ATC</td>
+            <td><a href="PDR-3714685111.html">3714685111</a></td>
+            <td>Xerox VersaLink B405</td>
+            <td>172.16.3.102</td>
+            <td>255.954</td>
+            <td>-</td>
+            <td>255.954</td>
+            <td>🔴</td>
+            <td>21-09-2026 13:11:30</td>
+            </tr>
+            
+            <tr>
+            <td>18</td>
+            <td>PAV-P1-Velatorios</td>
+            <td><a href="PDR-3719067084.html">3719067084</a></td>
+            <td>Xerox VersaLink B405</td>
+            <td>172.16.3.110</td>
+            <td>24.830</td>
+            <td>-</td>
+            <td>24.830</td>
+            <td>🔴</td>
+            <td>21-09-2026 13:11:33</td>
+            </tr>
+            
+            <tr>
+            <td>19</td>
+            <td>PAV-REC-Asesores</td>
+            <td><a href="PDR-3719067017.html">3719067017</a></td>
+            <td>Xerox VersaLink B405</td>
+            <td>172.16.3.145</td>
+            <td>93.211</td>
+            <td>-</td>
+            <td>93.211</td>
+            <td>🔴</td>
+            <td>21-09-2026 13:11:35</td>
+            </tr>
+            
+            <tr>
+            <td>20</td>
+            <td>PAV-BOD-Capataz</td>
+            <td><a href="PDR-3719411303.html">3719411303</a></td>
+            <td>Xerox VersaLink B405</td>
+            <td>172.16.3.183</td>
+            <td>181.359</td>
+            <td>-</td>
+            <td>181.359</td>
+            <td>🔴</td>
+            <td>21-09-2026 13:11:38</td>
+            </tr>
+            
+            <tr>
+            <td>21</td>
+            <td>PAV-Bod-RRHH</td>
+            <td><a href="PDR-3356024680.html">3356024680</a></td>
+            <td>Xerox VersaLink C405</td>
+            <td>172.16.3.185</td>
+            <td>12.654</td>
+            <td>50.994</td>
+            <td>63.648</td>
+            <td>🔴</td>
+            <td>21-09-2026 13:11:40</td>
+            </tr>
+            
+            <tr>
+            <td>22</td>
+            <td>PAV-BOD-Jbod</td>
+            <td><a href="PDR-3719931498.html">3719931498</a></td>
+            <td>Xerox VersaLink B405</td>
+            <td>172.16.3.203</td>
+            <td>33.197</td>
+            <td>-</td>
+            <td>33.197</td>
+            <td>🔴</td>
+            <td>21-09-2026 13:11:45</td>
+            </tr>
+            
+            <tr>
+            <td>23</td>
+            <td>PAV-P1-SupMantencion</td>
+            <td><a href="PDR-3719928560.html">3719928560</a></td>
+            <td>Xerox VersaLink B405</td>
+            <td>172.16.3.223</td>
+            <td>35.671</td>
+            <td>-</td>
+            <td>35.671</td>
+            <td>🔴</td>
+            <td>21-09-2026 13:11:50</td>
+            </tr>
+            
+            <tr>
+            <td>24</td>
+            <td>PAV-REC-Abastecimiento</td>
+            <td><a href="PDR-3714682511.html">3714682511</a></td>
+            <td>Xerox VersaLink B405</td>
+            <td>172.16.3.227</td>
+            <td>160.055</td>
+            <td>-</td>
+            <td>160.055</td>
+            <td>🔴</td>
+            <td>21-09-2026 11:11:38</td>
+            </tr>
+            
+            <tr>
+            <td>25</td>
+            <td>PAV-REC-Sepultaciones </td>
+            <td><a href="PDR-3719442969.html">3719442969</a></td>
+            <td>Xerox VersaLink B405</td>
+            <td>172.16.3.228</td>
+            <td>24.130</td>
+            <td>-</td>
+            <td>24.130</td>
+            <td>🔴</td>
+            <td>21-09-2026 13:11:52</td>
+            </tr>
+            
+            <tr>
+            <td>26</td>
+            <td>PAV-REC-GerCinerario</td>
+            <td><a href="PDR-3997881183.html">3997881183</a></td>
+            <td>Xerox VersaLink C405</td>
+            <td>172.16.3.236</td>
+            <td>47.016</td>
+            <td>3.921</td>
+            <td>50.937</td>
+            <td>🔴</td>
+            <td>21-09-2026 13:11:55</td>
+            </tr>
+            
+            <tr>
+            <td>27</td>
+            <td>PAV-CIN-ATC</td>
+            <td><a href="PDR-3719066878.html">3719066878</a></td>
+            <td>Xerox VersaLink B405</td>
+            <td>172.16.3.242</td>
+            <td>111.322</td>
+            <td>-</td>
+            <td>111.322</td>
+            <td>🔴</td>
+            <td>21-09-2026 13:12:01</td>
+            </tr>
+            
+            <tr>
+            <td>28</td>
+            <td>PAV-V555-ATC</td>
+            <td><a href="PDR-3719047679.html">3719047679</a></td>
+            <td>Xerox VersaLink B405</td>
+            <td>172.16.3.249</td>
+            <td>275.689</td>
+            <td>-</td>
+            <td>275.689</td>
+            <td>🔴</td>
+            <td>21-09-2026 13:12:03</td>
+            </tr>
+            
+            <tr>
+            <td>29</td>
+            <td>PCO-Administracion</td>
+            <td><a href="PDR-3719065510.html">3719065510</a></td>
+            <td>Xerox VersaLink B405</td>
+            <td>172.16.5.115</td>
+            <td>311.784</td>
+            <td>-</td>
+            <td>311.784</td>
+            <td>🔴</td>
+            <td>21-09-2026 12:06:58</td>
+            </tr>
+            
+            <tr>
+            <td>30</td>
+            <td>PCO-P1-AdmGeneral</td>
+            <td><a href="PDR-3997881116.html">3997881116</a></td>
+            <td>Xerox VersaLink C405</td>
+            <td>172.16.5.2</td>
+            <td>18.086</td>
+            <td>8.513</td>
+            <td>26.599</td>
+            <td>🔴</td>
+            <td>21-09-2026 13:12:07</td>
+            </tr>
+            
+            <tr>
+            <td>31</td>
+            <td>PCO-P2-CINERARIO</td>
+            <td><a href="PDR-3997880713.html">3997880713</a></td>
+            <td>Xerox VersaLink C405</td>
+            <td>172.16.5.205</td>
+            <td>801</td>
+            <td>33</td>
+            <td>834</td>
+            <td>🔴</td>
+            <td>21-09-2026 13:12:12</td>
+            </tr>
+            
+            <tr>
+            <td>32</td>
+            <td>VersaLink B405</td>
+            <td><a href="PDR-3719931404.html">3719931404</a></td>
+            <td>Xerox VersaLink B405</td>
+            <td>172.16.5.217</td>
+            <td>143</td>
+            <td>-</td>
+            <td>143</td>
+            <td>🔴</td>
+            <td>21-09-2026 13:12:18</td>
+            </tr>
+            
+            <tr>
+            <td>33</td>
+            <td>VersaLink C405</td>
+            <td><a href="PDR-3997881035.html">3997881035</a></td>
+            <td>Xerox VersaLink C405</td>
+            <td>172.16.5.220</td>
+            <td>453</td>
+            <td>1.432</td>
+            <td>1.885</td>
+            <td>🔴</td>
+            <td>21-09-2026 13:12:22</td>
+            </tr>
+            
+            <tr>
+            <td>34</td>
+            <td>PCO-P1-ATC</td>
+            <td><a href="PDR-3719410978.html">3719410978</a></td>
+            <td>Xerox VersaLink B405</td>
+            <td>172.16.5.222</td>
+            <td>214.572</td>
+            <td>-</td>
+            <td>214.572</td>
+            <td>🔴</td>
+            <td>21-09-2026 13:12:27</td>
+            </tr>
+            
+            <tr>
+            <td>35</td>
+            <td>PCO-CAJA-ATC</td>
+            <td><a href="PDR-3714678930.html">3714678930</a></td>
+            <td>Xerox VersaLink B405</td>
+            <td>172.16.5.37</td>
+            <td>162.529</td>
+            <td>-</td>
+            <td>162.529</td>
+            <td>🔴</td>
+            <td>21-09-2026 10:02:39</td>
+            </tr>
+            
+            <tr>
+            <td>36</td>
+            <td>VersaLink B405</td>
+            <td><a href="PDR-3719931412.html">3719931412</a></td>
+            <td>Xerox VersaLink B405</td>
+            <td>172.16.5.43</td>
+            <td>4</td>
+            <td>-</td>
+            <td>4</td>
+            <td>🔴</td>
+            <td>21-09-2026 13:12:30</td>
+            </tr>
+            
+            <tr>
+            <td>37</td>
+            <td>HDA-FINANZAS</td>
+            <td><a href="PDR-3356636812.html">3356636812</a></td>
+            <td>Xerox VersaLink C405</td>
+            <td>172.16.6.13</td>
+            <td>34.503</td>
+            <td>38.330</td>
+            <td>72.833</td>
+            <td>🔴</td>
+            <td>21-09-2026 13:12:33</td>
+            </tr>
+            
+            <tr>
+            <td>38</td>
+            <td>HDA-Tesoreria </td>
+            <td><a href="PDR-3393648073.html">3393648073</a></td>
+            <td>Xerox VersaLink B605</td>
+            <td>172.16.6.14</td>
+            <td>166.250</td>
+            <td>-</td>
+            <td>166.250</td>
+            <td>🔴</td>
+            <td>21-09-2026 13:12:41</td>
+            </tr>
+            
+            <tr>
+            <td>39</td>
+            <td>HDA-Cinerario</td>
+            <td><a href="PDR-3355985066.html">3355985066</a></td>
+            <td>Xerox VersaLink C405</td>
+            <td>172.16.6.75</td>
+            <td>12.662</td>
+            <td>25.312</td>
+            <td>37.974</td>
+            <td>🔴</td>
+            <td>21-09-2026 13:12:45</td>
+            </tr>
+            
+            <tr>
+            <td>40</td>
+            <td>ALA-P1-Personal</td>
+            <td><a href="PDR-3714669060.html">3714669060</a></td>
+            <td>Xerox VersaLink B405</td>
+            <td>172.16.7.220</td>
+            <td>167.244</td>
+            <td>-</td>
+            <td>167.244</td>
+            <td>🔴</td>
+            <td>21-09-2026 13:12:49</td>
+            </tr>
+            
+            <tr>
+            <td>41</td>
+            <td> ALA-P1-AtcAlameda</td>
+            <td><a href="PDR-3719928578.html">3719928578</a></td>
+            <td>Xerox VersaLink B405</td>
+            <td>172.16.7.4</td>
+            <td>45.283</td>
+            <td>-</td>
+            <td>45.283</td>
+            <td>🔴</td>
+            <td>21-09-2026 13:12:52</td>
+            </tr>
+            
+            <tr>
+            <td>42</td>
+            <td>Ala-p2-Asesores</td>
+            <td><a href="PDR-3997881043.html">3997881043</a></td>
+            <td>Xerox VersaLink C405</td>
+            <td>172.16.7.97</td>
+            <td>62.575</td>
+            <td>93.470</td>
+            <td>156.045</td>
+            <td>🔴</td>
+            <td>21-09-2026 13:12:56</td>
+            </tr>
+            
+            <tr>
+            <td>43</td>
+            <td>VersaLink B405</td>
+            <td><a href="PDR-3719411281.html">3719411281</a></td>
+            <td>Xerox VersaLink B405</td>
+            <td>172.16.8.125</td>
+            <td>151.391</td>
+            <td>-</td>
+            <td>151.391</td>
+            <td>🔴</td>
+            <td>21-09-2026 13:13:07</td>
+            </tr>
+            
+            <tr>
+            <td>44</td>
+            <td>VersaLink B405</td>
+            <td><a href="PDR-3719442500.html">3719442500</a></td>
+            <td>Xerox VersaLink B405</td>
+            <td>172.16.8.145</td>
+            <td>49.548</td>
+            <td>-</td>
+            <td>49.548</td>
+            <td>🔴</td>
+            <td>21-09-2026 13:13:10</td>
+            </tr>
+            
+            <tr>
+            <td>45</td>
+            <td>PPH-LP-ATC</td>
+            <td><a href="PDR-3714670530.html">3714670530</a></td>
+            <td>Xerox VersaLink B405</td>
+            <td>172.16.9.110</td>
+            <td>35.582</td>
+            <td>-</td>
+            <td>35.582</td>
+            <td>🔴</td>
+            <td>21-09-2026 13:13:12</td>
+            </tr>
+            
+            <tr>
+            <td>46</td>
+            <td>PPH-BOD-Condolencias</td>
+            <td><a href="PDR-3351397321.html">3351397321</a></td>
+            <td>Xerox VersaLink B400</td>
+            <td>172.16.8.119</td>
+            <td>43.866</td>
+            <td>-</td>
+            <td>43.866</td>
+            <td>🔴</td>
+            <td>21-09-2026 13:13:02</td>
+            </tr>
+            
+
+</tbody>
+
+</table>
+
+</div>
+
+<script>
+
+const buscar =
+    document.getElementById("buscar");
+
+buscar.addEventListener(
+    "keyup",
+    function() {
+
+        const filtro =
+            this.value.toLowerCase();
+
+        document
+            .querySelectorAll(
+                "#tabla tbody tr"
+            )
+            .forEach(fila => {
+
+                fila.style.display =
+                    fila.textContent
+                    .toLowerCase()
+                    .includes(filtro)
+                    ? ""
+                    : "none";
+
+            });
+
+    }
+);
+
+let columnaActual = -1;
+let ascendente = true;
+
+function ordenarTabla(columna)
+{
+    const tbody =
+        document.querySelector(
+            "#tabla tbody"
+        );
+
+    const filas =
+        Array.from(
+            tbody.querySelectorAll("tr")
+        );
+
+    if (columnaActual === columna)
+    {
+        ascendente = !ascendente;
+    }
+    else
+    {
+        columnaActual = columna;
+        ascendente = true;
+    }
+
+    filas.sort((a, b) => {
+
+        let aVal =
+            a.cells[columna]
+            .innerText
+            .trim();
+
+        let bVal =
+            b.cells[columna]
+            .innerText
+            .trim();
+
+        const aNum =
+            parseFloat(
+                aVal.replace(/\./g, "")
+            );
+
+        const bNum =
+            parseFloat(
+                bVal.replace(/\./g, "")
+            );
+
+        if (
+            !isNaN(aNum)
+            &&
+            !isNaN(bNum)
+        )
+        {
+            return ascendente
+                ? aNum - bNum
+                : bNum - aNum;
+        }
+
+        return ascendente
+            ? aVal.localeCompare(
+                bVal,
+                undefined,
+                {numeric:true}
+            )
+            : bVal.localeCompare(
+                aVal,
+                undefined,
+                {numeric:true}
+            );
+
+    });
+
+    tbody.innerHTML = "";
+
+    filas.forEach(
+        fila =>
+        tbody.appendChild(fila)
+    );
+
+    actualizarNumeracion();
+}
+
+function actualizarNumeracion()
+{
+    document
+        .querySelectorAll("#tabla tbody tr")
+        .forEach((fila, indice) => {
+
+            fila.cells[0].innerText =
+                indice + 1;
+
+        });
+}
+
+</script>
+
+
+</body>
+
+</html>

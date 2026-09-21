@@ -1,0 +1,727 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="utf-8">
+
+<title>Alertas y Eventos - PDR</title>
+
+<style>
+
+body {
+    font-family: Arial, sans-serif;
+    background:#f5f7fa;
+    margin:0;
+}
+
+header {
+    background: #2563eb;
+    color: white;
+    padding: 15px 20px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.container {
+    max-width:1400px;
+    margin:auto;
+    padding:20px;
+}
+
+table {
+    width:100%;
+    border-collapse:collapse;
+    background:white;
+}
+
+th,
+td {
+    border:1px solid #ddd;
+    padding:8px;
+}
+
+th {
+    background:#f3f4f6;
+    cursor:pointer;
+}
+
+tr:hover {
+    background:#f9fafb;
+}
+
+.buscar {
+    width:100%;
+    max-width:400px;
+    margin-bottom:20px;
+    padding:10px;
+    border:1px solid #ccc;
+    border-radius:6px;
+}
+
+.navegacion {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+
+.btn-nav {
+    display: inline-block;
+    padding: 10px 15px;
+    background: #2563eb;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+}
+
+.btn-nav:hover {
+    background: #1d4ed8;
+}
+
+.btn-nav:visited {
+    color: white;
+}
+
+.nav-header {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.nav-header a {
+    color: white;
+    text-decoration: none;
+    padding: 8px 12px;
+    border: 1px solid rgba(255,255,255,.4);
+    border-radius: 6px;
+    font-weight: bold;
+}
+
+.nav-header a:hover {
+    background: rgba(255,255,255,.15);
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<h1>Alertas y Eventos - PDR</h1>
+
+<div class="nav-header">
+
+<a href="index.html">🏠 Inicio</a>
+
+<a href="inventario.html">🖨️ Inventario</a>
+
+<a href="instalaciones.html">🔧 Instalaciones</a>
+
+</div>
+
+</header>
+
+<div class="container">
+
+<input
+class="buscar"
+type="text"
+id="buscar"
+placeholder="🔍 Buscar..."
+>
+
+<table id="tabla">
+
+<thead>
+
+<tr>
+<th onclick="ordenarTabla(0)">ID ↕</th>
+<th onclick="ordenarTabla(1)">Estado ↕</th>
+<th onclick="ordenarTabla(2)">Equipo ↕</th>
+<th onclick="ordenarTabla(3)">Serie ↕</th>
+<th onclick="ordenarTabla(4)">Modelo ↕</th>
+<th onclick="ordenarTabla(5)">Consumible ↕</th>
+<th onclick="ordenarTabla(6)">PN ↕</th>
+<th onclick="ordenarTabla(7)">Valor ↕</th>
+<th onclick="ordenarTabla(8)">Fecha Creación ↕</th>
+<th onclick="ordenarTabla(9)">Fecha Resolución ↕</th>
+</tr>
+
+</thead>
+
+<tbody>
+
+
+<tr>
+<td>PDR_0001</td>
+<td>
+<span style="
+    color:white;
+    background:#dc2626;
+    padding:4px 8px;
+    border-radius:5px;
+">
+ALERTA
+</span>
+</td>
+<td>VersaLink B405</td>
+<td><a href="PDR-3719067157.html">3719067157</a></td>
+<td>Xerox VersaLink B405</td>
+<td>Drum Black</td>
+<td>101R00554</td>
+<td>0%</td>
+<td>19-09-2026 04:11:28</td>
+<td>-</td>
+</tr>
+
+<tr>
+<td>PDR_0002</td>
+<td>
+<span style="
+    color:white;
+    background:#f59e0b;
+    padding:4px 8px;
+    border-radius:5px;
+">
+ADVERTENCIA
+</span>
+</td>
+<td>PAV2-BODEGA</td>
+<td><a href="PDR-3719048748.html">3719048748</a></td>
+<td>Xerox VersaLink B405</td>
+<td>Drum Black</td>
+<td>101R00554</td>
+<td>14%</td>
+<td>19-09-2026 04:11:28</td>
+<td>-</td>
+</tr>
+
+<tr>
+<td>PDR_0003</td>
+<td>
+<span style="
+    color:white;
+    background:#f59e0b;
+    padding:4px 8px;
+    border-radius:5px;
+">
+ADVERTENCIA
+</span>
+</td>
+<td>STC-OPERACIONES</td>
+<td><a href="PDR-3719442977.html">3719442977</a></td>
+<td>Xerox VersaLink B405</td>
+<td>Drum Black</td>
+<td>101R00554</td>
+<td>6%</td>
+<td>19-09-2026 04:11:28</td>
+<td>-</td>
+</tr>
+
+<tr>
+<td>PDR_0004</td>
+<td>
+<span style="
+    color:white;
+    background:#f59e0b;
+    padding:4px 8px;
+    border-radius:5px;
+">
+ADVERTENCIA
+</span>
+</td>
+<td>VersaLink C405</td>
+<td><a href="PDR-3355977748.html">3355977748</a></td>
+<td>Xerox VersaLink C405</td>
+<td>Toner Cyan</td>
+<td>106R03538</td>
+<td>15%</td>
+<td>19-09-2026 04:11:28</td>
+<td>-</td>
+</tr>
+
+<tr>
+<td>PDR_0005</td>
+<td>
+<span style="
+    color:white;
+    background:#dc2626;
+    padding:4px 8px;
+    border-radius:5px;
+">
+ALERTA
+</span>
+</td>
+<td>OSSA-ATC</td>
+<td><a href="PDR-3719047687.html">3719047687</a></td>
+<td>Xerox VersaLink B405</td>
+<td>Toner Black</td>
+<td>106R03585</td>
+<td>1%</td>
+<td>19-09-2026 04:11:28</td>
+<td>-</td>
+</tr>
+
+<tr>
+<td>PDR_0006</td>
+<td>
+<span style="
+    color:white;
+    background:#f59e0b;
+    padding:4px 8px;
+    border-radius:5px;
+">
+ADVERTENCIA
+</span>
+</td>
+<td>OSSA-ATC</td>
+<td><a href="PDR-3719047687.html">3719047687</a></td>
+<td>Xerox VersaLink B405</td>
+<td>Drum Black</td>
+<td>101R00554</td>
+<td>14%</td>
+<td>19-09-2026 04:11:28</td>
+<td>-</td>
+</tr>
+
+<tr>
+<td>PDR_0007</td>
+<td>
+<span style="
+    color:white;
+    background:#dc2626;
+    padding:4px 8px;
+    border-radius:5px;
+">
+ALERTA
+</span>
+</td>
+<td>PAV-REC-ATC</td>
+<td><a href="PDR-3714685111.html">3714685111</a></td>
+<td>Xerox VersaLink B405</td>
+<td>Toner Black</td>
+<td>106R03585</td>
+<td>2%</td>
+<td>19-09-2026 04:11:28</td>
+<td>-</td>
+</tr>
+
+<tr>
+<td>PDR_0008</td>
+<td>
+<span style="
+    color:white;
+    background:#f59e0b;
+    padding:4px 8px;
+    border-radius:5px;
+">
+ADVERTENCIA
+</span>
+</td>
+<td>PAV-REC-Asesores</td>
+<td><a href="PDR-3719067017.html">3719067017</a></td>
+<td>Xerox VersaLink B405</td>
+<td>Toner Black</td>
+<td>106R03585</td>
+<td>17%</td>
+<td>19-09-2026 04:11:28</td>
+<td>-</td>
+</tr>
+
+<tr>
+<td>PDR_0009</td>
+<td>
+<span style="
+    color:white;
+    background:#f59e0b;
+    padding:4px 8px;
+    border-radius:5px;
+">
+ADVERTENCIA
+</span>
+</td>
+<td>PAV-BOD-Capataz</td>
+<td><a href="PDR-3719411303.html">3719411303</a></td>
+<td>Xerox VersaLink B405</td>
+<td>Drum Black</td>
+<td>101R00554</td>
+<td>7%</td>
+<td>19-09-2026 04:11:28</td>
+<td>-</td>
+</tr>
+
+<tr>
+<td>PDR_0010</td>
+<td>
+<span style="
+    color:white;
+    background:#f59e0b;
+    padding:4px 8px;
+    border-radius:5px;
+">
+ADVERTENCIA
+</span>
+</td>
+<td>PAV-Bod-RRHH</td>
+<td><a href="PDR-3356024680.html">3356024680</a></td>
+<td>Xerox VersaLink C405</td>
+<td>Toner Magenta</td>
+<td>106R03539</td>
+<td>14%</td>
+<td>19-09-2026 04:11:28</td>
+<td>-</td>
+</tr>
+
+<tr>
+<td>PDR_0011</td>
+<td>
+<span style="
+    color:white;
+    background:#f59e0b;
+    padding:4px 8px;
+    border-radius:5px;
+">
+ADVERTENCIA
+</span>
+</td>
+<td>PCO-Administracion</td>
+<td><a href="PDR-3719065510.html">3719065510</a></td>
+<td>Xerox VersaLink B405</td>
+<td>Toner Black</td>
+<td>106R03585</td>
+<td>11%</td>
+<td>19-09-2026 04:11:28</td>
+<td>-</td>
+</tr>
+
+<tr>
+<td>PDR_0012</td>
+<td>
+<span style="
+    color:white;
+    background:#dc2626;
+    padding:4px 8px;
+    border-radius:5px;
+">
+ALERTA
+</span>
+</td>
+<td>PCO-P1-AdmGeneral</td>
+<td><a href="PDR-3997881116.html">3997881116</a></td>
+<td>Xerox VersaLink C405</td>
+<td>Toner Black</td>
+<td>106R03536</td>
+<td>1%</td>
+<td>19-09-2026 04:11:28</td>
+<td>-</td>
+</tr>
+
+<tr>
+<td>PDR_0013</td>
+<td>
+<span style="
+    color:white;
+    background:#dc2626;
+    padding:4px 8px;
+    border-radius:5px;
+">
+ALERTA
+</span>
+</td>
+<td>PCO-P1-AdmGeneral</td>
+<td><a href="PDR-3997881116.html">3997881116</a></td>
+<td>Xerox VersaLink C405</td>
+<td>Toner Magenta</td>
+<td>106R03539</td>
+<td>1%</td>
+<td>19-09-2026 04:11:28</td>
+<td>-</td>
+</tr>
+
+<tr>
+<td>PDR_0014</td>
+<td>
+<span style="
+    color:white;
+    background:#f59e0b;
+    padding:4px 8px;
+    border-radius:5px;
+">
+ADVERTENCIA
+</span>
+</td>
+<td>PCO-P1-ATC</td>
+<td><a href="PDR-3719410978.html">3719410978</a></td>
+<td>Xerox VersaLink B405</td>
+<td>Toner Black</td>
+<td>106R03585</td>
+<td>14%</td>
+<td>19-09-2026 04:11:28</td>
+<td>-</td>
+</tr>
+
+<tr>
+<td>PDR_0015</td>
+<td>
+<span style="
+    color:white;
+    background:#dc2626;
+    padding:4px 8px;
+    border-radius:5px;
+">
+ALERTA
+</span>
+</td>
+<td>HDA-FINANZAS</td>
+<td><a href="PDR-3356636812.html">3356636812</a></td>
+<td>Xerox VersaLink C405</td>
+<td>Toner Yellow</td>
+<td>106R03537</td>
+<td>9%</td>
+<td>19-09-2026 04:11:28</td>
+<td>-</td>
+</tr>
+
+<tr>
+<td>PDR_0016</td>
+<td>
+<span style="
+    color:white;
+    background:#dc2626;
+    padding:4px 8px;
+    border-radius:5px;
+">
+ALERTA
+</span>
+</td>
+<td>HDA-FINANZAS</td>
+<td><a href="PDR-3356636812.html">3356636812</a></td>
+<td>Xerox VersaLink C405</td>
+<td>Toner Cyan</td>
+<td>106R03538</td>
+<td>8%</td>
+<td>19-09-2026 04:11:28</td>
+<td>-</td>
+</tr>
+
+<tr>
+<td>PDR_0017</td>
+<td>
+<span style="
+    color:white;
+    background:#dc2626;
+    padding:4px 8px;
+    border-radius:5px;
+">
+ALERTA
+</span>
+</td>
+<td>Ala-p2-Asesores</td>
+<td><a href="PDR-3997881043.html">3997881043</a></td>
+<td>Xerox VersaLink C405</td>
+<td>Toner Magenta</td>
+<td>106R03539</td>
+<td>3%</td>
+<td>19-09-2026 04:11:28</td>
+<td>-</td>
+</tr>
+
+<tr>
+<td>PDR_0018</td>
+<td>
+<span style="
+    color:white;
+    background:#f59e0b;
+    padding:4px 8px;
+    border-radius:5px;
+">
+ADVERTENCIA
+</span>
+</td>
+<td>PAV-BOD-Capataz</td>
+<td><a href="PDR-3719411303.html">3719411303</a></td>
+<td>Xerox VersaLink B405</td>
+<td>Toner Black</td>
+<td>106R03585</td>
+<td>12%</td>
+<td>20-09-2026 14:03:51</td>
+<td>-</td>
+</tr>
+
+<tr>
+<td>PDR_0019</td>
+<td>
+<span style="
+    color:white;
+    background:#dc2626;
+    padding:4px 8px;
+    border-radius:5px;
+">
+ALERTA
+</span>
+</td>
+<td>STC-CTRL-OPERACIONES</td>
+<td><a href="PDR-3356636529.html">3356636529</a></td>
+<td>Xerox VersaLink C405</td>
+<td>Toner Black</td>
+<td>106R03536</td>
+<td>2%</td>
+<td>21-09-2026 08:03:37</td>
+<td>-</td>
+</tr>
+
+<tr>
+<td>PDR_0020</td>
+<td>
+<span style="
+    color:white;
+    background:#f59e0b;
+    padding:4px 8px;
+    border-radius:5px;
+">
+ADVERTENCIA
+</span>
+</td>
+<td>Ala-p2-Asesores</td>
+<td><a href="PDR-3997881043.html">3997881043</a></td>
+<td>Xerox VersaLink C405</td>
+<td>Toner Black</td>
+<td>106R03536</td>
+<td>18%</td>
+<td>21-09-2026 11:13:19</td>
+<td>-</td>
+</tr>
+
+
+</tbody>
+
+</table>
+
+</div>
+
+<script>
+
+const buscar =
+    document.getElementById("buscar");
+
+buscar.addEventListener(
+    "keyup",
+    function() {
+
+        const filtro =
+            this.value.toLowerCase();
+
+        document
+            .querySelectorAll(
+                "#tabla tbody tr"
+            )
+            .forEach(fila => {
+
+                fila.style.display =
+                    fila.textContent
+                    .toLowerCase()
+                    .includes(filtro)
+                    ? ""
+                    : "none";
+
+            });
+
+    }
+);
+
+let columnaActual = -1;
+let ascendente = true;
+
+function ordenarTabla(columna)
+{
+    const tbody =
+        document.querySelector(
+            "#tabla tbody"
+        );
+
+    const filas =
+        Array.from(
+            tbody.querySelectorAll("tr")
+        );
+
+    if (columnaActual === columna)
+    {
+        ascendente = !ascendente;
+    }
+    else
+    {
+        columnaActual = columna;
+        ascendente = true;
+    }
+
+    filas.sort((a, b) => {
+
+        let aVal =
+            a.cells[columna]
+            .innerText
+            .trim();
+
+        let bVal =
+            b.cells[columna]
+            .innerText
+            .trim();
+
+        const aNum =
+            parseFloat(
+                aVal.replace("%", "")
+            );
+
+        const bNum =
+            parseFloat(
+                bVal.replace("%", "")
+            );
+
+        if (
+            !isNaN(aNum)
+            &&
+            !isNaN(bNum)
+        )
+        {
+            return ascendente
+                ? aNum - bNum
+                : bNum - aNum;
+        }
+
+        return ascendente
+            ? aVal.localeCompare(
+                bVal,
+                undefined,
+                {numeric:true}
+            )
+            : bVal.localeCompare(
+                aVal,
+                undefined,
+                {numeric:true}
+            );
+
+    });
+
+    tbody.innerHTML = "";
+
+    filas.forEach(
+        fila =>
+        tbody.appendChild(fila)
+    );
+}
+
+</script>
+
+
+</body>
+
+</html>

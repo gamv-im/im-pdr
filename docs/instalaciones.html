@@ -1,0 +1,288 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="utf-8">
+
+<title>Instalaciones - PDR</title>
+
+<style>
+
+body {
+    font-family: Arial, sans-serif;
+    background:#f5f7fa;
+    margin:0;
+}
+
+header {
+    background: #2563eb;
+    color: white;
+    padding: 15px 20px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.container {
+    max-width:1400px;
+    margin:auto;
+    padding:20px;
+}
+
+table {
+    width:100%;
+    border-collapse:collapse;
+    background:white;
+}
+
+th,
+td {
+    border:1px solid #ddd;
+    padding:8px;
+}
+
+th {
+    background:#f3f4f6;
+    cursor:pointer;
+}
+
+tr:hover {
+    background:#f9fafb;
+}
+
+.buscar {
+    width:100%;
+    max-width:400px;
+    margin-bottom:20px;
+    padding:10px;
+    border:1px solid #ccc;
+    border-radius:6px;
+}
+
+.navegacion {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+
+.btn-nav {
+    display: inline-block;
+    padding: 10px 15px;
+    background: #2563eb;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+}
+
+.btn-nav:hover {
+    background: #1d4ed8;
+}
+
+.btn-nav:visited {
+    color: white;
+}
+
+.nav-header {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.nav-header a {
+    color: white;
+    text-decoration: none;
+    padding: 8px 12px;
+    border: 1px solid rgba(255,255,255,.4);
+    border-radius: 6px;
+    font-weight: bold;
+}
+
+.nav-header a:hover {
+    background: rgba(255,255,255,.15);
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<h1>Instalaciones - PDR</h1>
+
+<div class="nav-header">
+
+<a href="index.html">🏠 Inicio</a>
+
+<a href="inventario.html">🖨️ Inventario</a>
+
+<a href="alertas.html">⚠️ Alertas</a>
+
+</div>
+
+</header>
+
+<div class="container">
+
+<input
+class="buscar"
+type="text"
+id="buscar"
+placeholder="🔍 Buscar..."
+>
+
+<table id="tabla">
+
+<thead>
+
+<tr>
+<th onclick="ordenarTabla(0)">ID ↕</th>
+<th onclick="ordenarTabla(1)">Equipo ↕</th>
+<th onclick="ordenarTabla(2)">Serie ↕</th>
+<th onclick="ordenarTabla(3)">Modelo ↕</th>
+<th onclick="ordenarTabla(4)">Consumible ↵</th>
+<th onclick="ordenarTabla(5)">PN ↵</th>
+<th onclick="ordenarTabla(6)">Antes ↵</th>
+<th onclick="ordenarTabla(7)">Después ↕</th>
+<th onclick="ordenarTabla(8)">Incremento ↕</th>
+<th onclick="ordenarTabla(9)">Fecha Instalación ↕</th>
+</tr>
+
+</thead>
+
+<tbody>
+
+
+
+</tbody>
+
+</table>
+
+</div>
+
+<script>
+
+const buscar =
+    document.getElementById("buscar");
+
+buscar.addEventListener(
+    "keyup",
+    function() {
+
+        const filtro =
+            this.value.toLowerCase();
+
+        document
+            .querySelectorAll(
+                "#tabla tbody tr"
+            )
+            .forEach(fila => {
+
+                fila.style.display =
+                    fila.textContent
+                    .toLowerCase()
+                    .includes(filtro)
+                    ? ""
+                    : "none";
+
+            });
+
+    }
+);
+
+let columnaActual = -1;
+let ascendente = true;
+
+function ordenarTabla(columna)
+{
+    const tbody =
+        document.querySelector(
+            "#tabla tbody"
+        );
+
+    const filas =
+        Array.from(
+            tbody.querySelectorAll("tr")
+        );
+
+    if (columnaActual === columna)
+    {
+        ascendente = !ascendente;
+    }
+    else
+    {
+        columnaActual = columna;
+        ascendente = true;
+    }
+
+    filas.sort((a, b) => {
+
+        let aVal =
+            a.cells[columna]
+            .innerText
+            .trim();
+
+        let bVal =
+            b.cells[columna]
+            .innerText
+            .trim();
+
+        const aNum =
+            parseFloat(
+                aVal.replace("%", "")
+            );
+
+        const bNum =
+            parseFloat(
+                bVal.replace("%", "")
+            );
+
+        if (
+            !isNaN(aNum)
+            &&
+            !isNaN(bNum)
+        )
+        {
+            return ascendente
+                ? aNum - bNum
+                : bNum - aNum;
+        }
+
+        return ascendente
+            ? aVal.localeCompare(
+                bVal,
+                undefined,
+                {numeric:true}
+            )
+            : bVal.localeCompare(
+                aVal,
+                undefined,
+                {numeric:true}
+            );
+
+    });
+
+    tbody.innerHTML = "";
+
+    filas.forEach(
+        fila =>
+        tbody.appendChild(fila)
+    );
+}
+
+
+</script>
+
+
+</body>
+
+</html>
