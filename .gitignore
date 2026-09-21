@@ -10,5 +10,6 @@ modules/
 templates/
 main.py
 walk.py
+IM-V2.exe
 requirements.txt
 publicar.bat
